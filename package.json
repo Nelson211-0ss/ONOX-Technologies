@@ -1,0 +1,11 @@
+{
+  "name": "onox-technologies-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ONOX Technologies company website",
+  "scripts": {
+    "build": "node src/build.js",
+    "dev": "node src/build.js && node src/serve.js",
+    "serve": "node src/serve.js"
+  }
+}
