@@ -91,6 +91,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Portfolio filter (Websites We've Built)
+  const filterBtns = document.querySelectorAll(".filters__btn");
+  const clients = document.querySelectorAll(".client");
+  filterBtns.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.filter;
+      filterBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
+      clients.forEach((c) => (c.hidden = f !== "all" && c.dataset.type !== f));
+    })
+  );
+
+  // Client logo tiles: tap to show details on touch screens (hover handles desktop)
+  clients.forEach((tile) =>
+    tile.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return; // let "Visit website" work normally
+      const open = !tile.classList.contains("is-open");
+      clients.forEach((t) => t.classList.remove("is-open"));
+      tile.classList.toggle("is-open", open);
+    })
+  );
+
   // Contact form (front-end only – connect to a form service or backend to receive emails)
   const form = $("#contactForm");
   const note = $("#formNote");

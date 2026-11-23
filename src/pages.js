@@ -163,6 +163,48 @@ const productSection = (u, soft = true) => `
     </div>
   </section>`;
 
+// Websites we've built (from src/content/portfolio.js)
+const portfolio = require("./content/portfolio");
+const TYPE_ICONS = { Business: "fa-briefcase", Company: "fa-building", NGO: "fa-hand-holding-heart", School: "fa-graduation-cap", Government: "fa-landmark", Hospital: "fa-hospital", Hotel: "fa-hotel", Church: "fa-church", Other: "fa-globe" };
+const PLURALS = { Business: "Businesses", Company: "Companies", NGO: "NGOs", School: "Schools", Government: "Government", Hospital: "Hospitals", Hotel: "Hotels", Church: "Churches", Other: "Other" };
+const initials = (name) => name.replace(/&amp;/g, "&").split(/\s+/).filter((w) => /^[A-Za-z0-9]/.test(w)).slice(0, 2).map((w) => w[0].toUpperCase()).join("");
+const domainOf = (url) => url.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/.*$/, "");
+
+const portfolioSection = (u) => {
+  if (!portfolio.length) return "";
+  const types = [...new Set(portfolio.map((c) => c.type || "Other"))];
+  return `
+  <section class="portfolio section" id="our-work">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="pill">OUR WORK</span>
+        <h2>Websites We've Built</h2>
+        <p>Businesses, companies, NGOs and institutions that trust ONOX Technologies with their online presence.</p>
+      </div>
+      ${types.length > 1 ? `
+      <div class="filters" role="group" aria-label="Filter websites by type">
+        <button class="filters__btn is-active" data-filter="all">All <span>${portfolio.length}</span></button>
+        ${types.map((t) => `<button class="filters__btn" data-filter="${t}">${PLURALS[t] || t} <span>${portfolio.filter((c) => (c.type || "Other") === t).length}</span></button>`).join("\n        ")}
+      </div>` : ""}
+      <div class="clients" id="clientGrid">
+        ${portfolio.map((c) => { const t = c.type || "Other"; return `
+        <article class="client" data-type="${t}" tabindex="0" aria-label="${c.name}">
+          <div class="client__logo">
+            ${c.logo ? `<img src="${u(c.logo)}" alt="${c.name} logo" loading="lazy"${c.logoDark ? ' class="is-light"' : ""} />` : `<span class="client__initials">${initials(c.name)}</span>`}
+          </div>
+          <div class="client__info">
+            <span class="client__type"><i class="fa-solid ${TYPE_ICONS[t] || TYPE_ICONS.Other}"></i> ${t}</span>
+            <h3>${c.name}</h3>
+            ${c.note ? `<p>${c.note}</p>` : ""}
+            <a href="${c.url}" class="client__link" target="_blank" rel="noopener">Visit website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </article>`; }).join("")}
+      </div>
+      <p class="portfolio__cta">Want a professional website for your organization? <a href="${u("services/software-development/")}">See our web development service</a> or <a href="${u("contact/")}">request a quote</a>.</p>
+    </div>
+  </section>`;
+};
+
 /* ---------------------------------------------------------
    HOME
 --------------------------------------------------------- */
@@ -256,6 +298,7 @@ ${statsSection()}
   </section>
 ${whySection(u)}
 ${productSection(u)}
+${portfolioSection(u)}
 ${processSection()}
 
   <section class="industries section">
