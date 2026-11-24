@@ -20,6 +20,13 @@ module.exports = [
     logo: "assets/img/partners/wpess.png",
   },
   {
+    name: "Jdiobe STEM Foundation",
+    type: "NGO",
+    url: "https://www.jdiobestem.org/",
+    note: "Scholarships, mentorship and hands-on STEM opportunities for underserved students in Uganda and South Sudan.",
+    logo: "assets/img/partners/jdiobe-stem.png",
+  },
+  {
     name: "Alonyo Foundation",
     type: "NGO",
     url: "https://www.alonyofundation.org/",
@@ -32,6 +39,14 @@ module.exports = [
     url: "https://lopsatservicesltd.com/",
     note: "Logistics, freight forwarding, auto sales and travel services based in Juba, South Sudan.",
     logo: "assets/img/partners/lopsat-services.png",
+    logoDark: true,
+  },
+  {
+    name: "Adelio & Sons General Services",
+    type: "Business",
+    url: "https://www.adelioandsonsgenservices.com/",
+    note: "Stationery, office, agricultural and IT supplies, plus IT services, branding and business consultancy.",
+    logo: "assets/img/partners/adelio-sons.png",
     logoDark: true,
   },
   {

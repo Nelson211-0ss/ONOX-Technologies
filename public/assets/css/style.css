@@ -301,13 +301,14 @@ p + p { margin-top: 12px; }
 .filters__btn:hover { background: var(--orange-soft); color: var(--orange); }
 .filters__btn.is-active { background: var(--navy); color: var(--white); }
 .filters__btn.is-active span { background: var(--orange); color: var(--white); }
-.clients { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.clients { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; } /* last row is centred */
+.clients > .client { flex: 0 0 calc((100% - 60px) / 4); }
 /* Logo tile: black & white logo, details slide up on hover / focus / tap */
 .client { position: relative; height: 230px; border-radius: var(--radius); background: var(--bg-soft); overflow: hidden; cursor: pointer; outline: none; }
 .client[hidden] { display: none; }
 .client__logo { position: absolute; inset: 0; display: grid; place-items: center; padding: 30px 34px; transition: transform .4s ease, opacity .3s; }
 .client__logo img { max-width: 100%; max-height: 84px; object-fit: contain; filter: grayscale(1) contrast(1.15); opacity: .75; transition: filter .3s, opacity .3s; }
-.client__logo img.is-light { filter: brightness(0); opacity: .7; } /* white logos become black */
+.client__logo img.is-light { filter: grayscale(1) invert(1) contrast(1.1); opacity: .75; } /* white logos: inverted to dark tones, details kept */
 .client__initials { width: 72px; height: 72px; border-radius: 16px; display: grid; place-items: center; background: var(--ink); color: var(--white); font-family: var(--font-head); font-weight: 700; font-size: 1.4rem; }
 .client__info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 22px 24px; background: var(--navy); color: var(--white); opacity: 0; transform: translateY(100%); transition: transform .4s ease, opacity .3s; }
 .client:hover .client__info, .client:focus-within .client__info, .client.is-open .client__info { opacity: 1; transform: none; }
@@ -603,7 +604,8 @@ p + p { margin-top: 12px; }
   .about__grid, .why__grid, .contact__grid, .detail, .faq-page, .product__grid { grid-template-columns: 1fr; gap: 50px; }
   .detail__side, .faq-page .side-box { position: static; }
   .stats__grid, .process__grid, .contact-cards { grid-template-columns: repeat(2, 1fr); }
-  .industries__grid, .clients { grid-template-columns: repeat(3, 1fr); }
+  .industries__grid { grid-template-columns: repeat(3, 1fr); }
+  .clients > .client { flex-basis: calc((100% - 40px) / 3); }
   .testimonials__grid, .mvv, .plans, .commit, .roles, .timeline { grid-template-columns: 1fr 1fr; }
   .services__grid { grid-template-columns: 1fr 1fr; }
   .services__track { grid-auto-columns: calc((100% - 28px) / 2); }
@@ -633,7 +635,8 @@ p + p { margin-top: 12px; }
   .about__img--sub { width: 65%; height: 190px; top: 150px; }
   .about__badge { min-width: 170px; padding: 18px; }
   .stats__grid, .process__grid, .testimonials__grid, .footer__grid, .services__grid, .mvv, .plans, .commit, .roles, .timeline, .contact-cards { grid-template-columns: 1fr; }
-  .industries__grid, .clients { grid-template-columns: 1fr 1fr; }
+  .industries__grid { grid-template-columns: 1fr 1fr; }
+  .clients > .client { flex-basis: calc((100% - 20px) / 2); }
   .services__track { grid-auto-columns: 88%; }
   .form__row { grid-template-columns: 1fr; }
   .contact__form { padding: 26px 20px; }
