@@ -58,7 +58,7 @@ p + p { margin-top: 12px; }
 .pill--outline i { color: var(--orange); }
 
 /* ---------- Top bar ---------- */
-.topbar { overflow: hidden; background: #f1f4f5; font-size: .78rem; color: var(--muted); border-bottom: 1px solid var(--line); }
+.topbar { overflow: hidden; background: #f1f4f5; font-size: .78rem; color: var(--muted); }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 40px; }
 .topbar__item { margin: 0 !important; }
 .topbar__item i { color: var(--orange); margin-right: 4px; }
